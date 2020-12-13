@@ -1,0 +1,27 @@
+.body-content {
+    margin-bottom: 15px;
+}
+
+.main-container {
+    padding: 70px 20px 20px 20px;
+}
+
+.sort-container {
+    position: fixed;
+    margin-top: 6px;
+    z-index: 9;
+    width: 98%;
+    background-color: #f7f7f8;
+    padding: 10px;
+    height: 57px;
+    border-top: 1px solid rgb(226, 226, 226);
+    border-bottom: 1px solid rgb(226, 226, 226);
+}
+
+.end-list {
+    text-align: center;
+}
+
+.loader {
+    text-align: center;
+}
