@@ -52,7 +52,7 @@ class Home extends Component {
                     sort: sort,
                     sort_value: val,
                     products: sorted_items,
-                    loaded_products: JSON.parse(JSON.stringify(sorted_items)).splice(0,20),
+                    loaded_products: JSON.parse(JSON.stringify(sorted_items)).splice(0,this.state.page_limit),
                     loading: false,
                 })
             }, 3000);
@@ -84,7 +84,7 @@ class Home extends Component {
 
     loadNewProducts = (all_products, total_loaded) => {
         const remaining_items = all_products.length - total_loaded;
-        const to_be_loaded = remaining_items % 20;
+        const to_be_loaded = remaining_items % this.state.page_limit;
         const new_page = this.state.page + 1;
         let new_list = [];
         if (!to_be_loaded) {
@@ -128,7 +128,7 @@ class Home extends Component {
         }, () => {
             setTimeout(() =>{
                 const product_list = ASCII_JSON;
-                const first_data = JSON.parse(JSON.stringify(ASCII_JSON)).splice(0, 20);
+                const first_data = JSON.parse(JSON.stringify(ASCII_JSON)).splice(0, this.state.page_limit);
                 this.setState({
                     products: product_list,
                     loaded_products: first_data,
