@@ -21,7 +21,7 @@ class Home extends Component {
             products: [],
             loaded_products: [],
             page: 1,
-            page_limit: 20,
+            page_limit: 10,
             loading: false,
         }
         this.handleChangeValue = this.handleChangeValue.bind(this);
@@ -119,6 +119,14 @@ class Home extends Component {
         return product_date;
     }
 
+    handlePageLimit = (e) => {
+        this.setState({
+            page_limit: e.target.value,
+        }, () => {
+            this.sortProducts(this.state.sort, this.state.sort_value);
+        })
+    }
+
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll, false);
         (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -168,6 +176,18 @@ class Home extends Component {
                                         />
 
                                     }
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                        <Col>
+                            <Form inline>
+                                <Form.Group controlId="sort_by">
+                                    <Form.Label>Page Limit: &nbsp;&nbsp;&nbsp;</Form.Label>
+                                    <Form.Control as="select" name='value' onChange={this.handlePageLimit}>
+                                        <option value={10}>10</option>
+                                        <option value={20}>20</option>
+                                        <option value={50}>50</option>
+                                    </Form.Control>
                                 </Form.Group>
                             </Form>
                         </Col>
